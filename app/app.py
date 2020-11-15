@@ -9,7 +9,10 @@ def hello():
     if request.method == "POST":
         text = request.form["text"]
         processed_text = process_sentence(text)
-        return redirect("https://www.deepl.com/translator#en/ja/{}".format(processed_text))
+        if request.form["medium"] == "DeepL":
+            return redirect("https://www.deepl.com/translator#en/ja/{}".format(processed_text))
+        elif request.form["medium"] == "Google":
+            return redirect("https://translate.google.co.jp/?hl=ja&sl=en&tl=ja&text={}&op=translate".format(processed_text))
     return render_template("index.html")
 
 if __name__ == "__main__":
