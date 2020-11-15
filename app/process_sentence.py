@@ -12,7 +12,6 @@ def process_sentence(text):
             processed_sentence += line
         else:
             processed_sentence += line + " "
-    processed_sentence = processed_sentence.replace(" ", "%20")
     return processed_sentence
 
 
